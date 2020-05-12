@@ -20,7 +20,7 @@ Param (
     [ValidateSet("Standard", "Floating")]
     [string] $HostingType = "Standard",
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Unattended", "Attended", "Development", "Nonproduction")]
+    [ValidateSet("Unattended", "Attended", "Development", "NonProduction")]
     [string] $RobotType,
     [Parameter()]
     [AllowEmptyString()]
@@ -155,7 +155,7 @@ function Main {
             }
 
             #Provision Robot Type to Orchestrator
-            if ($RobotType -eq "Unattended" -or "Development") {
+            if ($RobotType -eq "Unattended" -or "Development" -or "NonProduction") {
                 $dataRobot = @{
                     MachineName       = $machineName
                     Username          = $adminUsername
